@@ -1,12 +1,3 @@
-# SPDX-FileCopyrightText: 2023 Niels Bouma
-# SPDX-FileCopyrightText: 2023 - 2024 Nikita Chernyi
-# SPDX-FileCopyrightText: 2023 - 2025 Slavi Pantaleev
-# SPDX-FileCopyrightText: 2024 Sergio Durigan Junior
-# SPDX-FileCopyrightText: 2025 MASH project contributors
-# SPDX-FileCopyrightText: 2025 Suguru Hirahara
-#
-# SPDX-License-Identifier: Apache-2.0
-
 ---
 # Project source code URL: https://github.com/dgtlmoon/changedetection.io
 
@@ -32,7 +23,7 @@ changedetection_hostname: ""
 # This value must either be `/` or not end with a slash (e.g. `/changedetection`).
 changedetection_path_prefix: /
 
-changedetection_container_image: "{{ changedetection_container_image_registry_prefix }}dgtlmoon/changedetection.io:{{ changedetection_container_image_tag }}"
+changedetection_container_image: "{{ changedetection_container_image_registry_prefix }}legitservices/changedetection.io:{{ changedetection_container_image_tag }}"
 changedetection_container_image_tag: "{{ changedetection_version }}"
 changedetection_container_image_registry_prefix: "{{ changedetection_container_image_registry_prefix_upstream }}"
 changedetection_container_image_registry_prefix_upstream: "{{ changedetection_container_image_registry_prefix_upstream_default }}"
@@ -41,7 +32,7 @@ changedetection_container_image_force_pull: "{{ changedetection_container_image.
 
 changedetection_container_image_self_build: false
 changedetection_container_image_self_build_name: "dgtlmoon/changedetection:{{ changedetection_container_image_self_build_repo_version }}"
-changedetection_container_image_self_build_repo: "https://github.com/dgtlmoon/changedetection.io.git"
+changedetection_container_image_self_build_repo: "https://github.com/P3X-118/changedetection.io.git"
 changedetection_container_image_self_build_repo_version: "{{ changedetection_version if changedetection_version != 'latest' else 'main' }}"
 changedetection_container_image_self_build_src_files_path: "{{ changedetection_base_path }}/docker-src"
 
