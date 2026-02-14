@@ -5,7 +5,7 @@
 ---
 - name: Check existence of Changedetection.io systemd service
   ansible.builtin.stat:
-    path: "{{ devture_systemd_docker_base_systemd_path }}/{{ changedetection_identifier }}.service"
+    path: "{{ sysd_docker_service_path }}/{{ changedetection_identifier }}.service"
   register: changedetection_service_stat
 
 - name: Uninstall Changedetection.io systemd services and files
@@ -20,7 +20,7 @@
 
     - name: Ensure Changedetection.io systemd service does not exist
       ansible.builtin.file:
-        path: "{{ devture_systemd_docker_base_systemd_path }}/{{ changedetection_identifier }}.service"
+        path: "{{ sysd_docker_service_path }}/{{ changedetection_identifier }}.service"
         state: absent
 
     - name: Ensure Changedetection.io container network does not exist via community.docker.docker_network
