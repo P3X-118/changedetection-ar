@@ -113,20 +113,20 @@
   changed_when: "'Downloaded newer image' in result.stdout"
 
 - name: Ensure Changedetection.io container network is created via community.docker.docker_network
-  when: devture_systemd_docker_base_container_network_creation_method == 'ansible-module'
+  when: sysd_docker_net_creation_method == 'ansible-module'
   community.docker.docker_network:
-    enable_ipv6: "{{ devture_systemd_docker_base_ipv6_enabled }}"
+    enable_ipv6: "{{ sysd_docker_ipv6_enabled }}"
     name: "{{ changedetection_container_network }}"
     driver: bridge
-    driver_options: "{{ devture_systemd_docker_base_container_networks_driver_options }}"
+    driver_options: "{{ sysd_docker_net_driver_opts }}"
 
 - name: Ensure Changedetection.io container network is created via ansible.builtin.command
-  when: devture_systemd_docker_base_container_network_creation_method == 'command'
+  when: sysd_docker_net_creation_method == 'command'
   ansible.builtin.command:
     cmd: >-
       {{ sysd_docker_host_command }} network create
-      {% if devture_systemd_docker_base_ipv6_enabled %}--ipv6{% endif %}
-      {{ devture_systemd_docker_base_container_networks_driver_options_string }}
+      {% if sysd_docker_ipv6_enabled %}--ipv6{% endif %}
+      {{ sysd_docker_net_driver_opts_string }}
       {{ changedetection_container_network }}
   register: network_creation_result
   changed_when: network_creation_result.rc == 0

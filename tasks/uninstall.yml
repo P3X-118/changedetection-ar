@@ -24,13 +24,13 @@
         state: absent
 
     - name: Ensure Changedetection.io container network does not exist via community.docker.docker_network
-      when: devture_systemd_docker_base_container_network_creation_method == 'ansible-module'
+      when: sysd_docker_net_creation_method == 'ansible-module'
       community.docker.docker_network:
         name: "{{ changedetection_container_network }}"
         state: absent
 
     - name: Ensure Changedetection.io container network does not exist via ansible.builtin.command
-      when: devture_systemd_docker_base_container_network_creation_method == 'command'
+      when: sysd_docker_net_creation_method == 'command'
       ansible.builtin.command:
         cmd: >-
           {{ sysd_docker_host_command }} network rm
