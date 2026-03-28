@@ -1,7 +1,7 @@
 ---
 # Project source code URL: https://github.com/dgtlmoon/changedetection.io
 
-changedetection_enabled: true
+changedetection_enabled: false
 
 changedetection_identifier: changedetection
 changedetection_base_path: "/{{ changedetection_identifier }}"
