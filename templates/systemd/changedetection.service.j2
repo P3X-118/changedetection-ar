@@ -18,9 +18,9 @@ DefaultDependencies=no
 
 [Service]
 Type=simple
-Environment="HOME={{ devture_systemd_docker_base_systemd_unit_home_path }}"
-ExecStartPre=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ sysd_docker_host_command }} stop -t {{ devture_systemd_docker_base_container_stop_grace_time_seconds }} {{ changedetection_identifier }} 2>/dev/null'
-ExecStartPre=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ sysd_docker_host_command }} rm {{ changedetection_identifier }} 2>/dev/null'
+Environment="HOME={{ sysd_docker_unit_home_path }}"
+ExecStartPre=-{{ sysd_docker_host_sh }} -c '{{ sysd_docker_host_command }} stop -t {{ sysd_docker_stop_grace }} {{ changedetection_identifier }} 2>/dev/null'
+ExecStartPre=-{{ sysd_docker_host_sh }} -c '{{ sysd_docker_host_command }} rm {{ changedetection_identifier }} 2>/dev/null'
 
 ExecStartPre={{ sysd_docker_host_command }} create \
       --rm \
@@ -48,8 +48,8 @@ ExecStartPre={{ sysd_docker_host_command }} network connect {{ network }} {{ cha
 
 ExecStart={{ sysd_docker_host_command }} start --attach {{ changedetection_identifier }}
 
-ExecStop=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ sysd_docker_host_command }} stop -t {{ devture_systemd_docker_base_container_stop_grace_time_seconds }} {{ changedetection_identifier }} 2>/dev/null'
-ExecStop=-{{ devture_systemd_docker_base_host_command_sh }} -c '{{ sysd_docker_host_command }} rm {{ changedetection_identifier }} 2>/dev/null'
+ExecStop=-{{ sysd_docker_host_sh }} -c '{{ sysd_docker_host_command }} stop -t {{ sysd_docker_stop_grace }} {{ changedetection_identifier }} 2>/dev/null'
+ExecStop=-{{ sysd_docker_host_sh }} -c '{{ sysd_docker_host_command }} rm {{ changedetection_identifier }} 2>/dev/null'
 Restart=always
 RestartSec=30
 SyslogIdentifier={{ changedetection_identifier }}
