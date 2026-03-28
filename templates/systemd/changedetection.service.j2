@@ -35,7 +35,7 @@ ExecStartPre={{ sysd_docker_host_command }} create \
       {% endif %}
       --env-file={{ changedetection_base_path }}/env \
       --label-file={{ changedetection_base_path }}/labels \
-      --mount type=bind,src={{ changedetection_data_path }},dst=/datastore \
+      --mount type=volume,src={{ changedetection_data_volume }},dst=/datastore \
       --tmpfs=/tmp:rw,noexec,nosuid,size={{ changedetection_container_tmpfs_tmp_size }} \
       {% for arg in changedetection_container_extra_arguments %}
       {{ arg }} \
