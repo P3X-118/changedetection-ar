@@ -198,6 +198,10 @@ changedetection_hide_referer: false
 # Specify the timezone
 changedetection_environment_variables_tz: UTC
 
+# API key for the changedetection.io REST API.
+# Generate with sgc_pgsk derivation or set manually. Empty disables API key auth.
+changedetection_api_key: ""
+
 # Additional environment variables.
 changedetection_environment_variables_additional_variables: ""
 
