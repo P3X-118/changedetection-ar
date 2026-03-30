@@ -24,7 +24,7 @@ changedetection_hostname: ""
 # This value must either be `/` or not end with a slash (e.g. `/changedetection`).
 changedetection_path_prefix: /
 
-changedetection_container_image: "{{ changedetection_container_image_registry_prefix }}legitservices/changedetection.io:{{ changedetection_container_image_tag }}"
+changedetection_container_image: "{{ changedetection_container_image_registry_prefix }}dgtlmoon/changedetection.io:{{ changedetection_container_image_tag }}"
 changedetection_container_image_tag: "{{ changedetection_version }}"
 changedetection_container_image_registry_prefix: "{{ changedetection_container_image_registry_prefix_upstream }}"
 changedetection_container_image_registry_prefix_upstream: "{{ changedetection_container_image_registry_prefix_upstream_default }}"
