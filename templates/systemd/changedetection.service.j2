@@ -26,9 +26,6 @@ ExecStartPre={{ sysd_docker_host_command }} create \
       --rm \
       --name={{ changedetection_identifier }} \
       --log-driver=none \
-      --user={{ changedetection_uid }}:{{ changedetection_gid }} \
-      --cap-drop=ALL \
-      --read-only \
       --network={{ changedetection_container_network }} \
       {% if changedetection_container_http_host_bind_port %}
       -p {{ changedetection_container_http_host_bind_port }}:{{ changedetection_container_http_port }} \
